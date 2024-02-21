@@ -5,11 +5,13 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import org.w3c.dom.Text
 
 class MainActivity : AppCompatActivity() {
 
     // Declare view properties - the first one is done for you
     lateinit var displayTextView: TextView
+    lateinit var editTextView: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -17,12 +19,12 @@ class MainActivity : AppCompatActivity() {
 
         // Initialize with views defined in Layout - the first one is done for you
         displayTextView = findViewById(R.id.displayTextView)
-        var editTextView = findViewById<EditText>(R.id.nameEditText)
+        editTextView = findViewById<EditText>(R.id.nameEditText)
 
 
         findViewById<Button>(R.id.clickMeButton).setOnClickListener {
             if (editTextView.text.isEmpty()) {
-                editTextView.setError("Name not specified")
+                editTextView.text = ("Name not specified")
             }
             else {
                 displayTextView.text = "Hello, ${findViewById<EditText>(R.id.nameEditText).text}"
